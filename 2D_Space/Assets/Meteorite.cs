@@ -1,0 +1,54 @@
+﻿using UnityEngine;
+using UnityEngine.UI;
+
+public class Meteorite : MonoBehaviour
+{
+    private float speedx;
+    private float speedy;
+    private float hp;
+    private float hpmax;
+    public float attack ;
+    private Image barHp;
+    private Rigidbody2D rig;
+    public GameObject hitPrint;
+    public GameObject bar;
+    private Animator ani;
+    //private float angle;
+    private void Awake()
+    {
+        speedx = Random.Range(-20, 20);
+        speedy = Random.Range(-20, 20);
+        rig = GetComponent<Rigidbody2D>();
+        hp = Random.Range(10, 50);
+        attack = 10;
+        ani = GetComponent<Animator>();
+        hpmax = hp;
+        barHp =bar.GetComponent<Image>();
+    }
+    private void Start()
+    {
+        rig.velocity = new Vector2(speedx, speedy);
+    }
+    public void Hit(float damage, Transform direction)
+    {
+        hp -= damage;
+        rig.AddForce(direction.right * 180 + direction.up * 80);
+        GameObject points = Instantiate(hitPrint, transform.position, Quaternion.identity) as GameObject;
+        points.transform.GetChild(0).GetComponent<TextMesh>().text = "" + Mathf.Round(damage);
+        //ani.SetTrigger("hit");
+        barHp.fillAmount = hp / hpmax;
+        if (hp <= 0) Dead();
+    }
+    void Dead()
+    {
+        ani.SetTrigger("die");
+        Destroy(gameObject, 0.8f);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "ufoplayer")
+        {
+            collision.GetComponent<UfoPlayer>().Hit(attack, transform);
+        }
+    }
+}
