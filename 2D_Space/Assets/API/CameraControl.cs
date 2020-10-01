@@ -19,7 +19,7 @@ public class CameraControl : MonoBehaviour
         Vector3 posA = transform.position;
         Vector3 posB = target.position;
 
-        posB.z = -10;
+        posB.z = -20;
 
         posB.y = Mathf.Clamp(posB.y, limit.x, limit.y);      //Y軸 = 數學.夾住(限制Y軸上下限)
         posB.x = Mathf.Clamp(posB.x, limit.x, limit.y);

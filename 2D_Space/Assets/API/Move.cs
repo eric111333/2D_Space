@@ -31,7 +31,7 @@ public class Move : MonoBehaviour
     {
         InvokeRepeating("rePoint", 0, 0.3f);
         Vector3 newPoint2 = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
-        ballrig.AddForce((newPoint2 - newPoint) * 1000f);
+        ballrig.AddForce((newPoint2 - newPoint) * 1500f);
     }
 
     void OnMouseDrag()

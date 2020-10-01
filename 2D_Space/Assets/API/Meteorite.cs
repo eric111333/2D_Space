@@ -7,12 +7,14 @@ public class Meteorite : MonoBehaviour
     private float speedy;
     private float hp;
     private float hpmax;
-    public float attack ;
+    private float attack ;
+    private int dieone;
     private Image barHp;
     private Rigidbody2D rig;
     public GameObject hitPrint;
     public GameObject bar;
     private Animator ani;
+
     //private float angle;
     private void Awake()
     {
@@ -24,6 +26,7 @@ public class Meteorite : MonoBehaviour
         ani = GetComponent<Animator>();
         hpmax = hp;
         barHp =bar.GetComponent<Image>();
+        dieone = 1;
     }
     private void Start()
     {
@@ -37,12 +40,15 @@ public class Meteorite : MonoBehaviour
         points.transform.GetChild(0).GetComponent<TextMesh>().text = "" + Mathf.Round(damage);
         //ani.SetTrigger("hit");
         barHp.fillAmount = hp / hpmax;
-        if (hp <= 0) Dead();
+        if (hp <= 0&&dieone==1) Dead();
     }
     void Dead()
     {
         ani.SetTrigger("die");
         Destroy(gameObject, 0.8f);
+        GameManager.Metcount--;
+        dieone--;
+        
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -51,4 +57,5 @@ public class Meteorite : MonoBehaviour
             collision.GetComponent<UfoPlayer>().Hit(attack, transform);
         }
     }
+
 }
