@@ -249,7 +249,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 092f058a5b1ef26469702124adfd35aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 0
   hitPrint: {fileID: 2123285144930618764, guid: ef38352332c0fb34482a8600e0bc00c7,
     type: 3}
   bar: {fileID: 8233864284181752965}

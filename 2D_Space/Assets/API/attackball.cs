@@ -21,6 +21,10 @@ public class attackball : MonoBehaviour
         {
             collision.GetComponent<Meteorite>().Hit(attack, transform);
         }
+        if (collision.tag == "boss")
+        {
+            collision.GetComponent<BossAI>().Hit(attack, transform);
+        }
     }
     private void Update()
     {
