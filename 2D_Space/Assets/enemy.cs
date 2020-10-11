@@ -8,6 +8,7 @@ public class enemy : MonoBehaviour
     private float timer;
     private float cd;
     public GameObject weapon_prefab;
+    private Transform att;
     public float turret_rotation_speed = 3f;
     public float shot_speed;
     //int barrel_index = 0;
@@ -15,8 +16,9 @@ public class enemy : MonoBehaviour
     {
         speed = 15f;
         distanceEn = 3f;
-        cd = 3f;
+        cd = 2f;
         target = GameObject.FindGameObjectWithTag("ufoplayer").GetComponent<Transform>();
+        //att = GameObject.FindGameObjectWithTag("enatt").GetComponent<Transform>();
     }
     private void FixedUpdate()
     {
@@ -30,7 +32,9 @@ public class enemy : MonoBehaviour
     {
         if (timer >= cd)
         {
-            GameObject bullet = (GameObject)Instantiate(weapon_prefab, transform.position, transform.rotation);
+            timer = 0;
+            //Vector3 Pos = new Vector3(att.position.x, att.position.y, att.position.z);
+            GameObject bullet = (GameObject)Instantiate(weapon_prefab, transform.GetChild(0).position, transform.rotation);
             bullet.GetComponent<Rigidbody2D>().AddForce(bullet.transform.up * shot_speed);
             bullet.GetComponent<Projectile>().firing_ship = transform.parent.gameObject;
             //barrel_index++; //This will cycle sequentially through the barrels in the barrel_hardpoints array
@@ -38,7 +42,7 @@ public class enemy : MonoBehaviour
             //    barrel_index = 0;
             //bullet.transform.position = Vector3.MoveTowards(
             //       target.transform.position, target.position, Time.deltaTime * 0.001f);
-            timer = 0;
+            
             
         }
     }
