@@ -2996,10 +2996,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eaaf7d147e60fd40bee568e3d793657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cd: 0
   weapon_prefab: {fileID: 100000, guid: bfe0ba4acc768a5448d46a6c63d8106a, type: 3}
   turret_rotation_speed: 3
-  shot_speed: 3
+  shot_speed: 355
 --- !u!58 &1429522888
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4416,7 +4415,7 @@ PrefabInstance:
     - target: {fileID: 3018693644070449822, guid: 15abd5eb54c21cf4c95db641b843916a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3018693645395323112, guid: 15abd5eb54c21cf4c95db641b843916a,
         type: 3}
