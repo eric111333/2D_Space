@@ -10,6 +10,7 @@ public class Move : MonoBehaviour
     public GameObject ball;
     private Rigidbody2D ballrig;
     private Vector3 newPoint;
+    private Vector3 ballPoint;
     public Vector3 linerSpeed;
     private float radius;
     private float speed;
@@ -39,11 +40,21 @@ public class Move : MonoBehaviour
     {
         newPoint = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
     }
+    void reballPoint()
+    {
+        ballPoint = new Vector3(ball.transform.position.x, ball.transform.position.y, ball.transform.position.z);
+    }
     void AddF()
     {
         InvokeRepeating("rePoint", 0, 0.3f);
         Vector3 newPoint2 = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
         ballrig.AddForce((newPoint2 - newPoint) * 1500f);
+    }
+    void AddFball()
+    {
+        InvokeRepeating("reballPoint", 0, 0.3f);
+        Vector3 ballPoint2 = new Vector3(ball.transform.position.x, ball.transform.position.y, ball.transform.position.z);
+        ballrig.AddForce((ballPoint2 - ballPoint) * 1500f);
     }
 
     public void OnMouseDrag()
@@ -61,6 +72,7 @@ public class Move : MonoBehaviour
     private void Update()
     {
         AddF();
+        AddFball();
     }
     void FixedUpdate()
     {
