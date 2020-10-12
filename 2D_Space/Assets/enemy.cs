@@ -16,8 +16,9 @@ public class enemy : MonoBehaviour
     {
         speed = 15f;
         distanceEn = 3f;
-        cd = 2f;
+        cd = 0.2f;
         target = GameObject.FindGameObjectWithTag("ufoplayer").GetComponent<Transform>();
+        Physics2D.IgnoreLayerCollision(9,10);
         //att = GameObject.FindGameObjectWithTag("enatt").GetComponent<Transform>();
     }
     private void FixedUpdate()
@@ -36,7 +37,7 @@ public class enemy : MonoBehaviour
             //Vector3 Pos = new Vector3(att.position.x, att.position.y, att.position.z);
             GameObject bullet = (GameObject)Instantiate(weapon_prefab, transform.GetChild(0).position, transform.rotation);
             bullet.GetComponent<Rigidbody2D>().AddForce(bullet.transform.up * shot_speed);
-            bullet.GetComponent<Projectile>().firing_ship = transform.parent.gameObject;
+            //bullet.GetComponent<Projectile>().firing_ship = transform.parent.gameObject;
             //barrel_index++; //This will cycle sequentially through the barrels in the barrel_hardpoints array
             //if (barrel_index >= barrel_hardpoints.Length)
             //    barrel_index = 0;

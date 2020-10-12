@@ -10,13 +10,25 @@ public class Move : MonoBehaviour
     public GameObject ball;
     private Rigidbody2D ballrig;
     private Vector3 newPoint;
+    public Vector3 linerSpeed;
+    private float radius;
+    private float speed;
+    private float omga;
 
     private void Awake()
     {
         ani = GetComponent<Animator>();
         ballrig = ball.GetComponent<Rigidbody2D>();
+
     }
-    void OnMouseDown()
+    private void Start()
+    {
+        ballrig.velocity = linerSpeed;
+        radius = (gameObject.transform.position - ball.transform.position).magnitude;
+        speed = linerSpeed.magnitude*10;
+        omga = speed * speed / radius;
+    }
+    public void OnMouseDown()
     {
         if (Time.timeScale == 0) return;
         screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
@@ -34,7 +46,7 @@ public class Move : MonoBehaviour
         ballrig.AddForce((newPoint2 - newPoint) * 1500f);
     }
 
-    void OnMouseDrag()
+    public void OnMouseDrag()
     {
         if (Time.timeScale == 0) return;
         Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
@@ -42,12 +54,18 @@ public class Move : MonoBehaviour
         transform.position = curPosition;
         ani.SetBool("move", true);
     }
-    private void OnMouseExit()
+    public void OnMouseExit()
     {
         ani.SetBool("move", false);
     }
     private void Update()
     {
         AddF();
+    }
+    void FixedUpdate()
+    {
+        Vector3 fp = newPoint - ball.transform.position;//向心力矢量，但此时向量模不正确
+        fp = fp.normalized * ballrig.mass * omga;//纠正向量的模
+        ballrig.AddForce(fp*90000, ForceMode2D.Force);
     }
 }
