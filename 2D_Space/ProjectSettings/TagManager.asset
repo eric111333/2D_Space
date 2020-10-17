@@ -8,6 +8,7 @@ TagManager:
   - ufoplayer
   - boss
   - Projectile
+  - enemy
   layers:
   - Default
   - TransparentFX

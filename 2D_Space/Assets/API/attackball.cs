@@ -25,6 +25,10 @@ public class attackball : MonoBehaviour
         {
             collision.GetComponent<BossAI>().Hit(attack, transform);
         }
+        if (collision.tag == "enemy")
+        {
+            collision.GetComponent<enemy>().Hit(attack);
+        }
     }
     private void Update()
     {

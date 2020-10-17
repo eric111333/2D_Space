@@ -12,9 +12,12 @@ public class Move : MonoBehaviour
     private Vector3 newPoint;
     private Vector3 ballPoint;
     public Vector3 linerSpeed;
+    private float speedx;
+    private float speedy;
     private float radius;
     private float speed;
     private float omga;
+    public float time5;
 
     private void Awake()
     {
@@ -52,9 +55,20 @@ public class Move : MonoBehaviour
     }
     void AddFball()
     {
-        InvokeRepeating("reballPoint", 0, 0.3f);
+        
+        {
+            
+            Vector3 ballPoint2 = new Vector3(ball.transform.position.x, ball.transform.position.y, ball.transform.position.z);
+            InvokeRepeating("reballPoint", 0, 0.3f);
+            ballrig.AddForce((ballPoint2 - ballPoint) * 1500f);
+
+        }
+    }
+    void cutFball()
+    {
         Vector3 ballPoint2 = new Vector3(ball.transform.position.x, ball.transform.position.y, ball.transform.position.z);
-        ballrig.AddForce((ballPoint2 - ballPoint) * 1500f);
+        InvokeRepeating("reballPoint", 0, 0.3f);
+        ballrig.AddForce((ballPoint - ballPoint2) * 6000f);
     }
 
     public void OnMouseDrag()
@@ -72,7 +86,16 @@ public class Move : MonoBehaviour
     private void Update()
     {
         AddF();
-        AddFball();
+        if (speedx + speedy > 2 && speedx + speedy < 60 && time5<3)
+        {
+            AddFball();
+            time5 += Time.deltaTime;
+        }
+        if (speedx + speedy < 3 && time5>3)
+            time5 = 0;
+        //cutFball();
+        speedx = Mathf.Abs(ballrig.velocity.x);
+        speedy = Mathf.Abs(ballrig.velocity.y);
     }
     void FixedUpdate()
     {

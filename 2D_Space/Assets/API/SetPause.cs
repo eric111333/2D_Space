@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SetPause : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class SetPause : MonoBehaviour
     private void Awake()
     {
         setpause = false;
+    }
+    public void Menu()
+    {
+        SceneManager.LoadScene("選單");
     }
     public void Pause()
     {
