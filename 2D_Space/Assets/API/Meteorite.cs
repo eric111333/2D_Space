@@ -14,15 +14,16 @@ public class Meteorite : MonoBehaviour
     public GameObject hitPrint;
     public GameObject bar;
     private Animator ani;
-
+    public int playerLv;
     //private float angle;
     private void Awake()
     {
+        playerLv = PlayerPrefs.GetInt("PlayerLv");
         speedx = Random.Range(-20, 20);
         speedy = Random.Range(-20, 20);
         rig = GetComponent<Rigidbody2D>();
-        hp = Random.Range(10, 50);
-        attack = 10;
+        hp = Random.Range(10, 50)+playerLv*10;
+        attack = 10+playerLv;
         ani = GetComponent<Animator>();
         hpmax = hp;
         barHp =bar.GetComponent<Image>();
@@ -40,7 +41,7 @@ public class Meteorite : MonoBehaviour
         points.transform.GetChild(0).GetComponent<TextMesh>().text = "" + Mathf.Round(damage);
         //ani.SetTrigger("hit");
         barHp.fillAmount = hp / hpmax;
-        if (hp <= 0&&dieone==1) Dead();
+        if (hp <= 0 && dieone==1) Dead();
     }
     void Dead()
     {

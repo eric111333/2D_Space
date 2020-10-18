@@ -9,9 +9,11 @@ public class GameManager : MonoBehaviour
     private int playerLvMax;
     private void Awake()
     {
-        Metcount = 1;
         playerLv=PlayerPrefs.GetInt("PlayerLv");
+        
         playerLvMax = PlayerPrefs.GetInt("PlayerLvMax");
+        
+        Metcount = 10+playerLv*2;
     }
     private void Update()
     {

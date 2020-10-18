@@ -20,7 +20,10 @@ public class MenuManager : MonoBehaviour
         backgame = PlayerPrefs.GetInt("backgame");
         PlayerLvMax = PlayerPrefs.GetInt("PlayerLvMax");
         PlayerLv = PlayerPrefs.GetInt("PlayerLv");
+        PlayerLv = PlayerLvMax;
         LvCount = PlayerLv;
+        if(LvCount>=1)
+        LvText.text = "Level" + "\n" + LvCount;
     }
     public void Playstart()
     {
@@ -34,6 +37,7 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetInt("PlayerLvMax", 0);
         PlayerPrefs.SetInt("backgame", 1);
         }
+        PlayerPrefs.SetInt("PlayerLv",PlayerLv);
         SceneManager.LoadScene("SampleScene");
     }
     public void right()

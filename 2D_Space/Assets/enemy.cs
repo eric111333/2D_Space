@@ -13,21 +13,25 @@ public class enemy : MonoBehaviour
     private float timer;
     private float cd;
     public GameObject weapon_prefab;
-    private Transform att;
+    //private Transform att;
     public GameObject bar;
     public float turret_rotation_speed = 3f;
     public float shot_speed;
     //int barrel_index = 0;
+    public int playerLv;
+    private int dieone;
     private void Awake()
     {
+        playerLv = PlayerPrefs.GetInt("PlayerLv");
         speed = 15f;
         distanceEn = 3f;
-        cd = 1f;
-        hp = 300;
+        cd = 1.5f;
+        hp = 100+playerLv*30;
         hpmax = hp;
         target = GameObject.FindGameObjectWithTag("ufoplayer").GetComponent<Transform>();
         Physics2D.IgnoreLayerCollision(9,10);
         barHp = bar.GetComponent<Image>();
+        dieone = 1;
         //att = GameObject.FindGameObjectWithTag("enatt").GetComponent<Transform>();
     }
     private void FixedUpdate()
@@ -64,14 +68,14 @@ public class enemy : MonoBehaviour
         points.transform.GetChild(0).GetComponent<TextMesh>().text = "" + Mathf.Round(damage);
         //ani.SetTrigger("hit");
         barHp.fillAmount = hp / hpmax;
-        if (hp <= 0) Dead();
+        if (hp <= 0 && dieone == 1) Dead();
     }
     void Dead()
     {
         //ani.SetTrigger("die");
         Destroy(gameObject, 0.8f);
-        //GameManager.Metcount--;
-        //dieone--;
+        GameManager.Metcount--;
+        dieone--;
 
     }
     private void Update()

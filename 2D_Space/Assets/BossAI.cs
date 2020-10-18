@@ -12,15 +12,19 @@ public class BossAI : MonoBehaviour
     public GameObject hitPrint;
     public GameObject bar;
     private Image barHp;
+    public int playerLv;
+    private int dieone;
     private void Awake()
     {
+        playerLv = PlayerPrefs.GetInt("PlayerLv");
         speed = 20f;
-        attack = 20;
-        hp = 500;
+        attack = 20+playerLv*5;
+        hp = 500+playerLv*50;
         target = GameObject.FindGameObjectWithTag("ufoplayer").GetComponent<Transform>();
         rig = GetComponent<Rigidbody2D>();
         hpmax = hp;
         barHp = bar.GetComponent<Image>();
+        dieone = 1;
 
     }
     public void Hit(float damage, Transform direction)
@@ -31,14 +35,14 @@ public class BossAI : MonoBehaviour
         points.transform.GetChild(0).GetComponent<TextMesh>().text = "" + Mathf.Round(damage);
         //ani.SetTrigger("hit");
         barHp.fillAmount = hp / hpmax;
-        if (hp <= 0) Dead();
+        if (hp <= 0 && dieone == 1) Dead();
     }
     void Dead()
     {
         //ani.SetTrigger("die");
         Destroy(gameObject, 0.8f);
-        //GameManager.Metcount--;
-        //dieone--;
+        GameManager.Metcount--;
+        dieone--;
 
     }
     private void OnTriggerEnter2D(Collider2D collision)
