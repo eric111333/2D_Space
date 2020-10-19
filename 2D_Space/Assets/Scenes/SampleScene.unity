@@ -4903,6 +4903,26 @@ PrefabInstance:
       propertyPath: ball
       value: 
       objectReference: {fileID: 1451237311}
+    - target: {fileID: 3018693645395323112, guid: 15abd5eb54c21cf4c95db641b843916a,
+        type: 3}
+      propertyPath: limitH.x
+      value: -55
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018693645395323112, guid: 15abd5eb54c21cf4c95db641b843916a,
+        type: 3}
+      propertyPath: limitV.x
+      value: -55
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018693645395323112, guid: 15abd5eb54c21cf4c95db641b843916a,
+        type: 3}
+      propertyPath: limitH.y
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018693645395323112, guid: 15abd5eb54c21cf4c95db641b843916a,
+        type: 3}
+      propertyPath: limitV.y
+      value: 55
+      objectReference: {fileID: 0}
     - target: {fileID: 3018693645395323668, guid: 15abd5eb54c21cf4c95db641b843916a,
         type: 3}
       propertyPath: m_LocalPosition.x

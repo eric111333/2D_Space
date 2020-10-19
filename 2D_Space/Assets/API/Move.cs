@@ -83,6 +83,9 @@ public class Move : MonoBehaviour
     {
         ani.SetBool("move", false);
     }
+    [SerializeField] Vector2 limitH;
+    [SerializeField] Vector2 limitV;
+
     private void Update()
     {
         AddF();
@@ -96,6 +99,8 @@ public class Move : MonoBehaviour
         //cutFball();
         speedx = Mathf.Abs(ballrig.velocity.x);
         speedy = Mathf.Abs(ballrig.velocity.y);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, limitH.x, limitH.y), Mathf.Clamp(transform.position.y, limitV.x, limitV.y), 0);   
+    
     }
     void FixedUpdate()
     {
