@@ -28,12 +28,6 @@ public class CameraControl : MonoBehaviour
         transform.position = posA;
     }
 
-    void Start()
-    {
-        
-    }
-
-
     void Update()
     {
         Track();

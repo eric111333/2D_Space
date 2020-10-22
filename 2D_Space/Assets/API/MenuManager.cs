@@ -28,6 +28,7 @@ public class MenuManager : MonoBehaviour
     }
     public void Playstart()
     {
+        
         if(backgame==0)
         { 
         PlayerPrefs.SetFloat("volume", 0.7f);
@@ -40,7 +41,12 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetInt("gold", 100);
         }
         PlayerPrefs.SetInt("PlayerLv",PlayerLv);
+        
         SceneManager.LoadScene("SampleScene");
+    }
+    public void PPLay()
+    {
+        SceneManager.LoadScene("遊戲");
     }
     public void right()
     {

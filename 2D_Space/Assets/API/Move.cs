@@ -64,12 +64,12 @@ public class Move : MonoBehaviour
 
         }
     }
-    void cutFball()
+    /*void cutFball()
     {
         Vector3 ballPoint2 = new Vector3(ball.transform.position.x, ball.transform.position.y, ball.transform.position.z);
         InvokeRepeating("reballPoint", 0, 0.3f);
         ballrig.AddForce((ballPoint - ballPoint2) * 6000f);
-    }
+    }*/
 
     public void OnMouseDrag()
     {
@@ -96,7 +96,6 @@ public class Move : MonoBehaviour
         }
         if (speedx + speedy < 3 && time5>3)
             time5 = 0;
-        //cutFball();
         speedx = Mathf.Abs(ballrig.velocity.x);
         speedy = Mathf.Abs(ballrig.velocity.y);
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, limitH.x, limitH.y), Mathf.Clamp(transform.position.y, limitV.x, limitV.y), 0);   
