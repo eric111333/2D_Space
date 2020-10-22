@@ -15,6 +15,7 @@ public class Meteorite : MonoBehaviour
     public GameObject bar;
     private Animator ani;
     public int playerLv;
+    
     //private float angle;
     private void Awake()
     {
@@ -28,6 +29,7 @@ public class Meteorite : MonoBehaviour
         hpmax = hp;
         barHp =bar.GetComponent<Image>();
         dieone = 1;
+        
     }
     private void Start()
     {
@@ -53,7 +55,7 @@ public class Meteorite : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "ufoplayer")
+        if (collision.tag == "ufoplayer" && dieone==1)
         {
             collision.GetComponent<UfoPlayer>().Hit(attack, transform);
         }

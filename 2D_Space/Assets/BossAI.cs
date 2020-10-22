@@ -14,12 +14,14 @@ public class BossAI : MonoBehaviour
     private Image barHp;
     public int playerLv;
     private int dieone;
+    private bool hit;
+    private float cdhit;
     private void Awake()
     {
         playerLv = PlayerPrefs.GetInt("PlayerLv");
         speed = 20f;
-        attack = 20+playerLv*5;
-        hp = 500+playerLv*50;
+        attack = 20 + playerLv * 5;
+        hp = 500 + playerLv * 50;
         target = GameObject.FindGameObjectWithTag("ufoplayer").GetComponent<Transform>();
         rig = GetComponent<Rigidbody2D>();
         hpmax = hp;
@@ -29,12 +31,18 @@ public class BossAI : MonoBehaviour
     }
     public void Hit(float damage, Transform direction)
     {
-        hp -= damage;
-        rig.AddForce(direction.right * 180 + direction.up * 80);
-        GameObject points = Instantiate(hitPrint, transform.position, Quaternion.identity) as GameObject;
-        points.transform.GetChild(0).GetComponent<TextMesh>().text = "" + Mathf.Round(damage);
-        //ani.SetTrigger("hit");
-        barHp.fillAmount = hp / hpmax;
+        if (hit==true)
+        {
+            hit = false;
+            hp -= damage;
+            rig.AddForce(direction.right * 180 + direction.up * 80);
+            GameObject points = Instantiate(hitPrint, transform.position, Quaternion.identity) as GameObject;
+            points.transform.GetChild(0).GetComponent<TextMesh>().text = "" + Mathf.Round(damage);
+            //ani.SetTrigger("hit");
+            barHp.fillAmount = hp / hpmax;
+            
+
+        }
         if (hp <= 0 && dieone == 1) Dead();
     }
     void Dead()
@@ -56,5 +64,16 @@ public class BossAI : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
     }
-
+    private void Update()
+    {
+        if (!hit)
+        {
+            cdhit += Time.deltaTime;
+            if (cdhit > 0.4f)
+            {
+                hit = true;
+                cdhit = 0;
+            }
+        }
+    }
 }

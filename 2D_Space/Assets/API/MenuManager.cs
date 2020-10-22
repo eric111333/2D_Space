@@ -17,9 +17,10 @@ public class MenuManager : MonoBehaviour
     {
         //PlayerPrefs.SetInt("PlayerLvMax", 0);
         //PlayerPrefs.SetInt("backgame", 0);
+        //PlayerPrefs.SetInt("gold", 200);
         backgame = PlayerPrefs.GetInt("backgame");
         PlayerLvMax = PlayerPrefs.GetInt("PlayerLvMax");
-        PlayerLv = PlayerPrefs.GetInt("PlayerLv");
+        //PlayerLv = PlayerPrefs.GetInt("PlayerLv");
         PlayerLv = PlayerLvMax;
         LvCount = PlayerLv;
         if(LvCount>=1)
@@ -31,11 +32,12 @@ public class MenuManager : MonoBehaviour
         { 
         PlayerPrefs.SetFloat("volume", 0.7f);
         PlayerPrefs.SetFloat("UFOhpMax", 300);
-        PlayerPrefs.SetInt("UFOattackDamage", 10);
+        PlayerPrefs.SetFloat("UFOattackDamage", 20);
         PlayerPrefs.SetInt("PlayerLv", 0);
         //PlayerPrefs.SetInt("LvCount", 0);
         PlayerPrefs.SetInt("PlayerLvMax", 0);
         PlayerPrefs.SetInt("backgame", 1);
+        PlayerPrefs.SetInt("gold", 100);
         }
         PlayerPrefs.SetInt("PlayerLv",PlayerLv);
         SceneManager.LoadScene("SampleScene");
