@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-    private int gold;
+    public static int gold;
     private int HpPuls;
     private float UFOhpMax;
     private float UFOattackDamage;
@@ -25,6 +25,8 @@ public class Shop : MonoBehaviour
         goldtext.text = "" + gold;
         Hptext.text = "" + UFOhpMax;
         Atttext.text = "" + UFOattackDamage;
+        expHptext.text = "UFO血量提升" + "\n" + "$" + (300 + HpPuls * 100);
+        expAtttext.text = "UFO攻擊提升" + "\n" + "$" + (300 + AttPuls * 100);
     }
 
     public void pulsHP()

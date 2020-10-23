@@ -41,6 +41,9 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    UnityEngine.Advertisements.dll:
+    - UnityEngine.Advertisements.Placeholder
+    - UnityEngine.Advertisements.Platform.Editor.BannerPlaceholder
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -54,7 +57,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
   sceneClasses:
-    Assets/Scenes/SampleScene.unity:
+    "Assets/Scenes/\u904A\u6232\u5834\u666F.unity":
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -116,134 +119,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11654}
     - Class: 114
-      Script: {instanceID: 11892}
-    - Class: 114
-      Script: {instanceID: 11976}
-    - Class: 114
-      Script: {instanceID: 12022}
-    - Class: 114
-      Script: {instanceID: 12110}
-    - Class: 114
-      Script: {instanceID: 12162}
-    - Class: 114
-      Script: {instanceID: 12174}
-    - Class: 114
-      Script: {instanceID: 12288}
-    - Class: 114
-      Script: {instanceID: 12336}
-    - Class: 114
-      Script: {instanceID: 12554}
-    - Class: 114
-      Script: {instanceID: 12778}
-    - Class: 114
-      Script: {instanceID: 13056}
-    - Class: 114
-      Script: {instanceID: 13090}
-    - Class: 114
-      Script: {instanceID: 13142}
-    - Class: 114
-      Script: {instanceID: 13478}
-    - Class: 114
-      Script: {instanceID: 13718}
-    - Class: 114
-      Script: {instanceID: 13868}
-    - Class: 114
-      Script: {instanceID: 14364}
-    - Class: 114
-      Script: {instanceID: 14528}
-    - Class: 114
-      Script: {instanceID: 14560}
-    - Class: 114
-      Script: {instanceID: 14574}
-    - Class: 114
-      Script: {instanceID: 14578}
-    - Class: 115
-      Script: {instanceID: 0}
-    - Class: 128
-      Script: {instanceID: 0}
-    - Class: 135
-      Script: {instanceID: 0}
-    - Class: 157
-      Script: {instanceID: 0}
-    - Class: 196
-      Script: {instanceID: 0}
-    - Class: 198
-      Script: {instanceID: 0}
-    - Class: 199
-      Script: {instanceID: 0}
-    - Class: 212
-      Script: {instanceID: 0}
-    - Class: 213
-      Script: {instanceID: 0}
-    - Class: 222
-      Script: {instanceID: 0}
-    - Class: 223
-      Script: {instanceID: 0}
-    - Class: 224
-      Script: {instanceID: 0}
-    - Class: 233
-      Script: {instanceID: 0}
-    "Assets/Scenes/\u904A\u6232.unity":
-    - Class: 1
-      Script: {instanceID: 0}
-    - Class: 4
-      Script: {instanceID: 0}
-    - Class: 20
-      Script: {instanceID: 0}
-    - Class: 21
-      Script: {instanceID: 0}
-    - Class: 23
-      Script: {instanceID: 0}
-    - Class: 28
-      Script: {instanceID: 0}
-    - Class: 33
-      Script: {instanceID: 0}
-    - Class: 43
-      Script: {instanceID: 0}
-    - Class: 48
-      Script: {instanceID: 0}
-    - Class: 50
-      Script: {instanceID: 0}
-    - Class: 58
-      Script: {instanceID: 0}
-    - Class: 61
-      Script: {instanceID: 0}
-    - Class: 62
-      Script: {instanceID: 0}
-    - Class: 70
-      Script: {instanceID: 0}
-    - Class: 74
-      Script: {instanceID: 0}
-    - Class: 81
-      Script: {instanceID: 0}
-    - Class: 82
-      Script: {instanceID: 0}
-    - Class: 83
-      Script: {instanceID: 0}
-    - Class: 84
-      Script: {instanceID: 0}
-    - Class: 91
-      Script: {instanceID: 0}
-    - Class: 95
-      Script: {instanceID: 0}
-    - Class: 96
-      Script: {instanceID: 0}
-    - Class: 102
-      Script: {instanceID: 0}
-    - Class: 104
-      Script: {instanceID: 0}
-    - Class: 114
-      Script: {instanceID: 11206}
-    - Class: 114
-      Script: {instanceID: 11466}
-    - Class: 114
-      Script: {instanceID: 11518}
-    - Class: 114
-      Script: {instanceID: 11568}
-    - Class: 114
-      Script: {instanceID: 11578}
-    - Class: 114
-      Script: {instanceID: 11654}
+      Script: {instanceID: 11828}
     - Class: 114
       Script: {instanceID: 11892}
     - Class: 114
@@ -668,7 +544,7 @@ ScriptsOnlyBuild:
     className: SpriteShape
   - hash:
       serializedVersion: 2
-      Hash: d49fae5d36c659880a4f372805c35b7e
+      Hash: 35de455eec3e3d68924056736d597a97
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SetPause
@@ -1053,6 +929,5 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - "Assets/Scenes/\u9078\u55AE.unity"
-  - Assets/Scenes/SampleScene.unity
-  - "Assets/Scenes/\u904A\u6232.unity"
-  playerPath: D:/Unity/2D_Space/2D_Space/2D_Space/UFOsurvive001.apk
+  - "Assets/Scenes/\u904A\u6232\u5834\u666F.unity"
+  playerPath: D:/Unity/2D_Space/2D_Space/2D_Space/UFOsurvive01.apk

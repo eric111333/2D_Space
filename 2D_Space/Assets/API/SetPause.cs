@@ -12,8 +12,22 @@ public class SetPause : MonoBehaviour
     public GameObject music;
     public GameObject setting;
     public GameObject shop;
+    private int playerLvMax;
+    private bool vib;
+    public GameObject vibset;
+    private int vibre;
+    public GameObject description;
+    public GameObject description1;
+    public GameObject description2;
+    private bool setdes;
     private void Awake()
     {
+        vibre = PlayerPrefs.GetInt("vib");
+        if (vibre == 1) vib = true;
+        if (vibre == 0) vib = false;
+        vibset.SetActive(vib);
+        playerLvMax = PlayerPrefs.GetInt("PlayerLvMax");
+        //playerLvMax = 10;
         setpause = false;
     }
     public void Menu()
@@ -39,6 +53,24 @@ public class SetPause : MonoBehaviour
             }
         }
     }
+    public void openvib()
+    {
+        vib = !vib;
+        vibset.SetActive(vib);
+        if (vib)
+            Handheld.Vibrate();
+        if (vib) vibre = 1;
+        if (!vib) vibre = 0;
+        PlayerPrefs.SetInt("vib", vibre);
+        attackball.one++;
+    }
+    public void opendes()
+    {
+        setdes = !setdes;
+        description.SetActive(setdes);
+        description1.SetActive(setdes);
+        description2.SetActive(setdes);
+    }
     public void openUI()
     {
         setUiOpen = !setUiOpen;
@@ -62,6 +94,8 @@ public class SetPause : MonoBehaviour
     }
     public void openShop()
     {
+        if (playerLvMax >= 1) 
+        { 
         setShopOpen = !setShopOpen;
         setUI.SetActive(setShopOpen);
         shop.SetActive(setShopOpen);
@@ -80,11 +114,15 @@ public class SetPause : MonoBehaviour
                 ResumeGame();
             }
         }
+        }
     }
     public void Shop()
     {
-        shop.SetActive(true);
-        setting.SetActive(false);
+        if (playerLvMax >= 1)
+        {
+            shop.SetActive(true);
+            setting.SetActive(false);
+        }
     }
     public void Setting()
     {

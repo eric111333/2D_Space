@@ -143,6 +143,7 @@ MonoBehaviour:
   bar: {fileID: 8700064977869068814}
   turret_rotation_speed: 3
   shot_speed: 355
+  playerLv: 0
 --- !u!70 &790479529195612588
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

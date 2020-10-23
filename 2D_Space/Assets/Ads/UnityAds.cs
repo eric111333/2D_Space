@@ -7,14 +7,14 @@ using UnityEngine.UI;
 public class UnityAds : MonoBehaviour, IUnityAdsListener
 {
     string GooglePlay_ID = "3873253";
-    bool GameMode = true;
+    bool GameMode = false;
     string myPlacementId = "rewardedVideo";
-    private int gold;
+    //private int gold;
     public Text goldtext;
 
     void Start()
     {
-        gold = PlayerPrefs.GetInt("gold");
+        //gold = PlayerPrefs.GetInt("gold");
         Advertisement.AddListener(this);
         Advertisement.Initialize(GooglePlay_ID, GameMode);
     }
@@ -43,9 +43,9 @@ public class UnityAds : MonoBehaviour, IUnityAdsListener
         // Define conditional logic for each ad completion status:
         if (showResult == ShowResult.Finished)
         {
-            gold += 300;
-            PlayerPrefs.SetInt("gold", gold);
-            goldtext.text = "" + gold;
+            Shop.gold += 300;
+            PlayerPrefs.SetInt("gold", Shop.gold);
+            goldtext.text = "" + Shop.gold;
             // Reward the user for watching the ad to completion.
         }
         else if (showResult == ShowResult.Skipped)

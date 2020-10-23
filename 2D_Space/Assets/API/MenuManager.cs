@@ -21,6 +21,7 @@ public class MenuManager : MonoBehaviour
         backgame = PlayerPrefs.GetInt("backgame");
         PlayerLvMax = PlayerPrefs.GetInt("PlayerLvMax");
         //PlayerLv = PlayerPrefs.GetInt("PlayerLv");
+        //PlayerLvMax = 10;
         PlayerLv = PlayerLvMax;
         LvCount = PlayerLv;
         if(LvCount>=1)
@@ -32,21 +33,26 @@ public class MenuManager : MonoBehaviour
         if(backgame==0)
         { 
         PlayerPrefs.SetFloat("volume", 0.7f);
-        PlayerPrefs.SetFloat("UFOhpMax", 300);
-        PlayerPrefs.SetFloat("UFOattackDamage", 20);
+        PlayerPrefs.SetFloat("UFOhpMax", 250);
+        PlayerPrefs.SetFloat("UFOattackDamage", 10);
         PlayerPrefs.SetInt("PlayerLv", 0);
         //PlayerPrefs.SetInt("LvCount", 0);
         PlayerPrefs.SetInt("PlayerLvMax", 0);
         PlayerPrefs.SetInt("backgame", 1);
         PlayerPrefs.SetInt("gold", 100);
+        PlayerPrefs.SetInt("vib", 1);
         }
         PlayerPrefs.SetInt("PlayerLv",PlayerLv);
         
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("遊戲場景");
     }
     public void PPLay()
     {
-        SceneManager.LoadScene("遊戲");
+        SceneManager.LoadScene("測試");
+    }
+    public void PPPlay2()
+    {
+        SceneManager.LoadScene("遊戲場景");
     }
     public void right()
     {
